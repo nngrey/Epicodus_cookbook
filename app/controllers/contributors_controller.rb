@@ -1,16 +1,16 @@
 class ContributorsController < ApplicationController
   def index
     @contributors = Contributor.all
-    render('/contributors/index.html.erb')
+    render('contributors/index.html.erb')
   end
 
   def create
-    @contributors = Contributor.all
+    # @contributors = Contributor.all
     @contributor = Contributor.new(:name => params[:name])
 
     if @contributor.save
-      render('contributors/index.html.erb')
-      # redirect_to("contributors/#{@contributor.id}")
+      # render('contributors/index.html.erb')
+      redirect_to("/contributors/#{@contributor.id}")
     else
       @contributors = Contributor.all
       render('contributors/new.html.erb')
