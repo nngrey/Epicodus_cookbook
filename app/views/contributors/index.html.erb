@@ -1,0 +1,8 @@
+<h1>Cookbook Contributors</h1>
+
+<ul>
+  <% @contributors.each do |contributor| %>
+    <li><a href="/contributors/<%= contributor.id %>"><%= contributor.name %></a></li>
+  <% end %>
+</ul>
+

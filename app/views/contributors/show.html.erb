@@ -1,0 +1,11 @@
+<h1><%= @contributor.name %></h1>
+
+<p>Recipes I created!</p>
+
+<p><a href="/contributors/<%= @contributor.id %>/edit">Edit</a></p>
+<p><a href="/contributors/<%= @contributor.id %>"
+      data-confirm="You sure?"
+      data-method="delete"
+      rel="nofollow">Delete</a></p>
+
+<p><a href="/contributors">Return to the contributors index</a></p>
