@@ -33,6 +33,7 @@ class ContributorsController < ApplicationController
 
   def update
     @contributor = Contributor.find(params[:id])
+
     if @contributor.update(:name => params[:name])
       redirect_to("/contributors/#{@contributor.id}")
     else

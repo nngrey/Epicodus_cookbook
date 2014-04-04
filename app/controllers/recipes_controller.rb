@@ -25,4 +25,19 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     render('recipes/show.html.erb')
   end
+
+  def edit
+    @recipe = Recipe.find(params[:id])
+    render('recipes/edit.html.erb')
+  end
+
+  def update
+    @contributor = Contributor.find(params[:id])
+
+    if @contributor.update(name: params[:name], contents: params[:contents], contributor_id: params[:contributor_id])
+      redirect_to("/recipes/#{recipe.id}")
+    else
+      render('recipes/edit.html.erb')
+    end
+  end
 end
