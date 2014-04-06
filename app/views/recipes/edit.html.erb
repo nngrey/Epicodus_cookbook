@@ -2,10 +2,10 @@
 
 <%= render('layouts/errors', :object => @recipe) %>
 
-<form action="/recipes/<%= @recipe.id %>/" method="post">
-  <input name="_method" type="hidden" value="patch">
+<!--form action="/recipes/<%= @recipe.id %>/" method="post">
+  <input name="_method" type="hidden" value="patch"-->
   <%= render('form') %>
-  <button>Update Recipe</button>
+  <!--button>Update Recipe</button-->
 </form>
 
-<p><a href="/recipes">Return to the recipes index</a></p>
+

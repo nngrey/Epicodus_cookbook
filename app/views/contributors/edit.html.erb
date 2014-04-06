@@ -1,7 +1,11 @@
 <h1>Edit <%= @contributor.name %></h1>
 
-<form action="/contributors/<%= @contributor.id %>/" method="post">
-  <input name="_method" type="hidden" value="patch">
+<%= render('layouts/errors', :object => @contributor) %>
+<!--form action="/contributors/<%= @contributor.id %>/" method="post">
+  <input name="_method" type="hidden" value="patch"-->
   <%= render('form') %>
-<button>Update Contact</button>
+<!--button>Update Contact</button-->
 </form>
+
+
+

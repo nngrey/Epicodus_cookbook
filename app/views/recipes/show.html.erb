@@ -1,11 +1,12 @@
 <h1><%= @recipe.name %></h1>
 
-<p><%= @recipe.contents %></p>
+<p><%= simple_format (@recipe.contents) %></p>
 
-<p><a href="/recipes/<%= @recipe.id %>/edit">Edit</a></p>
-<p><a href="/recipes/<%= @recipe.id %>"
-      data-confirm="You sure?"
-      data-method="delete"
-      rel="nofollow">Delete</a></p>
+<p><%= link_to "Edit", edit_recipe_path(@recipe) %></p>
+<p><%= link_to "Delete", recipe_path(@recipe),
+      :confirm => "You sure?",
+      :method => "delete",
+      :class => "btn btn-danger" %></p>
 
-<p><a href="/recipes">Return to the recipes index</a></p>
+
+

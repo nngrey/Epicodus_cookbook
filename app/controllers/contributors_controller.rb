@@ -1,7 +1,8 @@
 class ContributorsController < ApplicationController
   def index
+    @contributor = Contributor.new(:name => params[:name])
     @contributors = Contributor.all
-    render('contributors/index.html.erb')
+    # render('contributors/index.html.erb')
   end
 
   def create
@@ -10,25 +11,26 @@ class ContributorsController < ApplicationController
 
     if @contributor.save
       # render('contributors/index.html.erb')
+      flash[:notice] = "Your cook was added to the cookbook."
       redirect_to("/contributors/#{@contributor.id}")
     else
       @contributors = Contributor.all
-      render('contributors/new.html.erb')
+      # render('contributors/new.html.erb')
     end
    end
 
   def new
-    render('contributors/new.html.erb')
+    # render('contributors/new.html.erb')
   end
 
   def show
     @contributor = Contributor.find(params[:id])
-    render('contributors/show.html.erb')
+    # render('contributors/show.html.erb')
   end
 
   def edit
     @contributor = Contributor.find(params[:id])
-    render('contributors/edit.html.erb')
+    # render('contributors/edit.html.erb')
   end
 
   def update
