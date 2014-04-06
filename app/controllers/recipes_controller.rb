@@ -32,12 +32,18 @@ class RecipesController < ApplicationController
   end
 
   def update
-    @contributor = Contributor.find(params[:id])
+    @recipe = Recipe.find(params[:id])
 
-    if @contributor.update(name: params[:name], contents: params[:contents], contributor_id: params[:contributor_id])
+    if @recipe.update(name: params[:name], contents: params[:contents], contributor_id: params[:contributor_id])
       redirect_to("/recipes/#{recipe.id}")
     else
       render('recipes/edit.html.erb')
     end
+  end
+
+  def destroy
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+    redirect_to("/recipes/")
   end
 end
