@@ -1,8 +1,8 @@
 class RecipesController < ApplicationController
   def index
-    @recipe = Recipe.new(params[:recipe])#(name: params[:name], contents: params[:contents], contributor_id: params[:contributor_id])
+    @recipe = Recipe.new()#(name: params[:name], contents: params[:contents], contributor_id: params[:contributor_id])
     @recipes = Recipe.all
-    # render('recipes/index.html.erb')
+    @contributors = Contributor.all
   end
 
   def new
@@ -12,7 +12,7 @@ class RecipesController < ApplicationController
   def create
     # @recipes = Recipe.all
     # Contributor.find_by(:name => params[:contributor_name])
-    @recipe = Recipe.new(params[:recipe]) #(name: params[:name], contents: params[:contents], contributor_id: params[:contributor_id])
+    @recipe = Recipe.new(recipe_params) #(name: params[:name], contents: params[:contents], contributor_id: params[:contributor_id])
 
     if @recipe.save
       flash[:notice] = "Your recipe was added to the cookbook."
@@ -47,5 +47,11 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
     redirect_to("/recipes/")
+  end
+
+  private
+
+  def recipe_params
+    params.require(:recipe).permit(:name, :contents, contributor_attributes: [ :id ])
   end
 end

@@ -1,0 +1,8 @@
+%h1
+  Edit #{@contributor.name}
+= render('layouts/errors', :object => @contributor)
+/
+  form action="/contributors/<haml_loud> @contributor.id </haml_loud>/" method="post">
+  <input name="_method" type="hidden" value="patch"
+= render('form')
+/ button>Update Contact</button

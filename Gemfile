@@ -3,13 +3,12 @@ source 'https://rubygems.org'
 gem 'rails'
 gem 'pg'
 gem 'sass-rails'
+gem 'bootstrap-sass',       '3.2.0.0'
 gem 'uglifier'
-gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem "therubyracer"
-gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-gem "twitter-bootstrap-rails"
+gem "haml-rails", "~> 0.9"
 
 group :development do
   gem 'better_errors'

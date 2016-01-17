@@ -1,0 +1,8 @@
+%h3 Recipes
+%ul
+  - @recipes.each do |recipe|
+    %li= link_to recipe.name, recipe_path(recipe)
+  %hr
+%h3 Add a Recipe
+%form{:action => "/recipes", :method => "post"}
+  = render('form')

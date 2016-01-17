@@ -1,0 +1,8 @@
+%h1= @contributor.name
+%p Recipes I created!
+%p= link_to "Edit", edit_contributor_path(@contributor)
+/ a href="/contributors/<haml_loud> @contributor.id </haml_loud>/edit">Edit</a
+%p= link_to "Delete", contributor_path(@contributor), |
+    :confirm => "You sure?",                          |
+    :method => "delete",                              |
+    :class => "btn btn-danger"                        |

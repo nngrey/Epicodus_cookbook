@@ -1,0 +1,7 @@
+%h1= @recipe.name
+%p= simple_format (@recipe.contents)
+%p= link_to "Edit", edit_recipe_path(@recipe)
+%p= link_to "Delete", recipe_path(@recipe), |
+    :confirm => "You sure?",                |
+    :method => "delete",                    |
+    :class => "btn btn-danger"              |

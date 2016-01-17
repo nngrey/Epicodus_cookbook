@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title cookbook
+    = stylesheet_link_tag 'application', media: 'all', |
+      'data-turbolinks-track' => true                  |
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    /[if lt IE 9]
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+      </script>
+  %body
+    %header.navbar.navbar-fixed-top.navbar-inverse
+      .container
+        = link_to "Cook Book", '/', id: "logo"
+        %nav
+          %ul.nav.navbar-nav.navbar-right
+            %li= link_to "Home",   '#'
+            %li= link_to "Help",   '#'
+            %li= link_to "Log in", '#'
+    .container
+      = yield

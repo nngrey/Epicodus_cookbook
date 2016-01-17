@@ -1,0 +1,8 @@
+%h1 Recipe Contributors
+%ul
+  - @contributors.each do |contributor|
+    %li= link_to contributor.name, contributor_path(contributor.id)
+%h3 Add a Contributor
+%form{:action => "/contributors", :method => "post"}
+  = render('form')
+  %button Create Contact

@@ -1,0 +1,13 @@
+= form_for(@recipe) do |f|
+  = f.fields_for :contributor do |contributor_form|
+    .contributor_fields
+      .field
+        = contributor_form.label :name
+        = contributor_form.collection_select :contributor_id, @contributors, :id, :name, include_blank: true
+  .form-group
+    = f.label :title
+    = f.text_field :name
+  .form-group
+    = f.label :contents
+    = f.text_area :contents
+  = f.submit(:class => "btn btn-primary")
