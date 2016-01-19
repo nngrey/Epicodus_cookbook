@@ -1,7 +1,13 @@
-%h1= @recipe.name
-%p= simple_format (@recipe.contents)
+%h3= @recipe.name
+%dl
+  %dt Instructions:
+  %dd= simple_format (@recipe.contents)
+  %dt Contributor
+  %dd= @recipe.contributor.name
+  %dt Tags
+  %dl= @recipe.tags.map(&:name).join ', '
 %p= link_to "Edit", edit_recipe_path(@recipe)
-%p= link_to "Delete", recipe_path(@recipe), |
-    :confirm => "You sure?",                |
-    :method => "delete",                    |
-    :class => "btn btn-danger"              |
+%p= link_to "Delete", recipe_path(@recipe),
+    :confirm => "You sure?",
+    :method => "delete",
+    :class => "btn btn-danger"

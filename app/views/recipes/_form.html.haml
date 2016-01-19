@@ -1,13 +1,18 @@
-= form_for(@recipe) do |f|
-  = f.fields_for :contributor do |contributor_form|
-    .contributor_fields
-      .field
-        = contributor_form.label :name
-        = contributor_form.collection_select :contributor_id, @contributors, :id, :name, include_blank: true
-  .form-group
-    = f.label :title
-    = f.text_field :name
-  .form-group
-    = f.label :contents
-    = f.text_area :contents
-  = f.submit(:class => "btn btn-primary")
+.container
+  .form-horizontal
+    = form_for(@recipe) do |f|
+      .form-group
+        = f.label :contributor
+        = f.collection_select :contributor_id, Contributor.all, :id, :name, include_blank: "Please select"
+      .form-group
+        = f.label :title
+        = f.text_field :name
+      .form-group
+        = f.label :contents
+        = f.text_area :contents
+      .form-group
+        = f.label :tag
+        .checkbox-inline= f.collection_check_boxes :tag_ids, Tag.all, :id, :name, { }, { :multiple => true }
+      .form-group
+        = f.submit(:class => "btn btn-primary")
+

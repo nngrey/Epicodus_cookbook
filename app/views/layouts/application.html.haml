@@ -16,8 +16,10 @@
         = link_to "Cook Book", '/', id: "logo"
         %nav
           %ul.nav.navbar-nav.navbar-right
-            %li= link_to "Home",   '#'
-            %li= link_to "Help",   '#'
-            %li= link_to "Log in", '#'
+            %li= link_to "Contributors",   contributors_path
+            %li= link_to "Recipes",   '/'
+            %li= link_to "Tags",   tags_path
+
     .container
+      = render partial: "/shared/flash_messages"
       = yield

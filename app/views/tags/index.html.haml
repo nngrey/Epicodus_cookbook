@@ -1,0 +1,8 @@
+%h3 Tags
+%ul
+  - @tags.each do |tag|
+    %li= link_to tag.name, tag_path(tag)
+  %hr
+%h3 Add a tag
+%form{:action => "/tags", :method => "post"}
+  = render('form')

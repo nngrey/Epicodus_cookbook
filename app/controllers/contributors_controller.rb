@@ -6,16 +6,13 @@ class ContributorsController < ApplicationController
   end
 
   def create
-    # @contributors = Contributor.all
-    @contributor = Contributor.new(:name => params[:name])
+    @contributor = Contributor.new(contributor_params)
 
     if @contributor.save
-      # render('contributors/index.html.erb')
       flash[:notice] = "Your cook was added to the cookbook."
-      redirect_to("/contributors/#{@contributor.id}")
+      redirect_to contributors_path
     else
-      @contributors = Contributor.all
-      # render('contributors/new.html.erb')
+      render contributors_path
     end
    end
 
@@ -47,6 +44,12 @@ class ContributorsController < ApplicationController
     @contributor = Contributor.find(params[:id])
     @contributor.destroy
     redirect_to("/contributors/")
+  end
+
+  private
+
+  def contributor_params
+    params.require(:contributor).permit(:name)
   end
 
 end
