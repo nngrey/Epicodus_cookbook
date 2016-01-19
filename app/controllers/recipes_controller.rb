@@ -9,9 +9,7 @@ class RecipesController < ApplicationController
     # Contributor.find_by(:name => params[:contributor_name])
     @recipe = Recipe.new(recipe_params) #(name: params[:name], contents: params[:contents], contributor_id: params[:contributor_id])
     if @recipe.save
-      binding.pry
-
-      flash[:notice] = "Your recipe was added to the cookbook."
+      flash[:success] = "Your recipe was added to the cookbook."
       redirect_to '/'
     else
       @recipes = Recipe.all
