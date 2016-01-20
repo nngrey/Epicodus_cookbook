@@ -1,23 +1,26 @@
 class RecipesController < ApplicationController
+
   def index
-    @recipe = Recipe.new
     @recipes = Recipe.all
   end
 
+  def new
+    @recipe = Recipe.new
+  end
+
   def create
-    # @recipes = Recipe.all
-    # Contributor.find_by(:name => params[:contributor_name])
-    @recipe = Recipe.new(recipe_params) #(name: params[:name], contents: params[:contents], contributor_id: params[:contributor_id])
+    @recipe = Recipe.new(recipe_params)
     if @recipe.save
       flash[:success] = "Your recipe was added to the cookbook."
       redirect_to '/'
     else
-      @recipes = Recipe.all
-      render('recipes/new.html.erb')
+      flash[:error] = "Your recipe could not be saved."
+      render :new
     end
   end
 
    def show
+    @star = Star.new
     @recipe = Recipe.find(params[:id])
     @contributor = @recipe.contributor
   end
@@ -29,7 +32,7 @@ class RecipesController < ApplicationController
   def update
     @recipe = Recipe.find(params[:id])
 
-    if @recipe.update(params[:recipe])#(name: params[:name], contents: params[:contents], contributor_id: params[:contributor_id])
+    if @recipe.update(recipe_params)#(name: params[:name], contents: params[:contents], contributor_id: params[:contributor_id])
       redirect_to recipes_path  #("/recipes/#{recipe.id}")
     else
       render('recipes/edit.html.erb')
@@ -45,6 +48,6 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :contents, :contributor_id, tag_ids: [])
+    params.require(:recipe).permit(:name, :contents, :contributor_id, :stars, tag_ids: [])
   end
 end

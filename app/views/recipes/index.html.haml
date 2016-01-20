@@ -1,8 +1,14 @@
-%h3 Recipes
-%ul
-  - @recipes.each do |recipe|
-    %li= link_to recipe.name, recipe_path(recipe)
-  %hr
-%h3 Add a Recipe
-%form{:action => "/recipes", :method => "post"}
-  = render('form')
+.row
+  .col-md-9
+    %h3 Recipes
+  .col-md-3
+    .div#add-button-div
+      %a.btn.btn-default{:href => new_recipe_path} Add a recipe
+%br
+.row
+  %ul
+    - @recipes.each do |recipe|
+      %li
+        = link_to recipe.name, recipe_path(recipe)
+        - recipe.rating.round.times do
+          %span.glyphicon.glyphicon-star{"aria-hidden" => "true"}

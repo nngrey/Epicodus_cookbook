@@ -1,8 +1,12 @@
-%h3 Tags
-%ul
-  - @tags.each do |tag|
-    %li= link_to tag.name, tag_path(tag)
-  %hr
-%h3 Add a tag
-%form{:action => "/tags", :method => "post"}
-  = render('form')
+.row
+  .col-md-9
+    %h3 Tags
+  .col-md-3
+    .div#add-button-div
+      %a.btn.btn-default{:href => new_tag_path} Add a tag
+%br
+.row
+  %ul
+    - @tags.each do |tag|
+      %li= link_to tag.name, tag_path(tag)
+

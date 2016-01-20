@@ -1,8 +1,11 @@
 class ContributorsController < ApplicationController
   def index
-    @contributor = Contributor.new(:name => params[:name])
     @contributors = Contributor.all
     # render('contributors/index.html.erb')
+  end
+
+  def new
+    @contributor = Contributor.new
   end
 
   def create
@@ -15,10 +18,6 @@ class ContributorsController < ApplicationController
       render contributors_path
     end
    end
-
-  def new
-    # render('contributors/new.html.erb')
-  end
 
   def show
     @contributor = Contributor.find(params[:id])

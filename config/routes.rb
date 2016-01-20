@@ -1,6 +1,8 @@
 Cookbook::Application.routes.draw do
 	resources :contributors
-	resources :recipes
+	resources :recipes do
+    resources :stars
+  end
   resources :tags
 	root :to => 'recipes#index'
  # match('contributors', {:via => :get, :to => 'contributors#index'})

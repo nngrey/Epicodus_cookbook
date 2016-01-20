@@ -1,8 +1,11 @@
-%h3 Recipe Contributors
-%ul
-  - @contributors.each do |contributor|
-    %li= link_to contributor.name, contributor_path(contributor.id)
-%hr
-%h3 Add a Contributor
-%form{:action => "/contributors", :method => "post"}
-  = render('form')
+.row
+  .col-md-9
+    %h3 Recipe Contributors
+  .col-md-3
+    .div#add-button-div
+      %a.btn.btn-default{:href => new_contributor_path} Add a contributor
+%br
+.row
+  %ul
+    - @contributors.each do |contributor|
+      %li= link_to contributor.name, contributor_path(contributor.id)

@@ -50,6 +50,14 @@ p {
   line-height: 1.7em;
 }
 
+.help-block {
+  color: red;
+}
+
+li {
+  font-size: 140%;
+}
+
 /* header */
 
 #logo {
@@ -68,10 +76,31 @@ p {
   text-decoration: none;
 }
 
+.header-table {
+  width: 400px;
+}
+
+#add-button-div {
+  height: 54px;
+  line-height: 54px;
+}
+
 /* checkboxes */
 
 label {
   display: block;
+}
+
+/* flash */
+
+#flash-messages {
+  height: 60px;
+}
+
+/* stars */
+
+.glyphicon.glyphicon-star {
+  color: gold;
 }
 
 

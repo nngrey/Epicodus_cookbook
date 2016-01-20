@@ -19,7 +19,8 @@
             %li= link_to "Contributors",   contributors_path
             %li= link_to "Recipes",   '/'
             %li= link_to "Tags",   tags_path
-
     .container
-      = render partial: "/shared/flash_messages"
+      .div#flash-messages
+        = render partial: "/shared/flash_messages"
+      = yield :form_errors
       = yield
