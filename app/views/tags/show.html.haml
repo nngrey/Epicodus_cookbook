@@ -1,6 +1,16 @@
-%h3= @tag.name
-%p= link_to "Edit", edit_tag_path(@tag)
-%p= link_to "Delete", tag_path(@tag), |
-    :confirm => "You sure?",                |
-    :method => "delete",                    |
-    :class => "btn btn-danger"              |
+%table
+  %tr.tag-row
+    %td
+      %h3= @tag.name
+    %td#tag-buttons
+      = link_to "Edit", edit_tag_path(@tag),
+        :class => "btn btn-default btn-xs"
+      = link_to "Delete", tag_path(@tag),
+        :confirm => "You sure?",
+        :method => "delete",
+        :class => "btn btn-danger btn-xs"
+%br
+%h4 Recipes
+- @tag.recipes.each do | recipe |
+  = link_to recipe.name, recipe_path(recipe)
+

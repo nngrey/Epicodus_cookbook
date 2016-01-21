@@ -1,17 +1,24 @@
-%h3= @recipe.name
-%dl
-  %dt Contributor
-  %dd= @recipe.contributor.name
-  %dt Instructions:
+%table
+  %tr.tag-row
+    %td
+      %h3= @recipe.name
+    %td#tag-buttons
+      = link_to "Edit", edit_recipe_path(@recipe),
+        :class => "btn btn-default btn-xs"
+      = link_to "Delete", recipe_path(@recipe),
+        :confirm => "You sure?",
+        :method => "delete",
+        :class => "btn btn-danger btn-xs"
+%br
+%dl.dl-horizontal
+  %dt Contributor:
+  %dd= @recipe.contributor.name if @recipe.contributor
+  %dt Directions:
   %dd= simple_format (@recipe.contents)
-  %dt Tags
-  %dl= @recipe.tags.map(&:name).join ', '
-%h3 Rate
-= form_for [@recipe, @star] do |f|
-  = f.select :rating, [[1.0, 1], [2.0, 2], [3.0, 3], [4.0, 4], [5.0, 5]]
-  = f.submit "Rate this recipe"
-
-%p= link_to "Edit", edit_recipe_path(@recipe)
-%p= link_to "Delete", recipe_path(@recipe),
-    :confirm => "You sure?",
-    :method => "delete"
+  %dt Tags:
+  %dd= @recipe.tags.map(&:name).join ', '
+  %dt Rating
+  %dd
+    = form_for [@recipe, @star] do |f|
+      = f.select :rating, [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]], :include_blank => "Select One"
+      = f.submit "Rate this recipe", :class => 'btn btn-default btn-xs'

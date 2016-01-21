@@ -5,10 +5,15 @@
     .div#add-button-div
       %a.btn.btn-default{:href => new_recipe_path} Add a recipe
 %br
-.row
-  %ul
-    - @recipes.each do |recipe|
-      %li
-        = link_to recipe.name, recipe_path(recipe)
-        - recipe.rating.round.times do
-          %span.glyphicon.glyphicon-star{"aria-hidden" => "true"}
+%table
+  - Recipe.custom_sort.each do |recipe|
+    - if recipe.present?
+      %tr
+        %td
+          = link_to recipe.name, recipe_path(recipe)
+        %td
+          - recipe.rating.round.times do
+            %span.glyphicon.glyphicon-star{"aria-hidden" => "true"}
+        %td
+          - if Recipe.new_recipes.include?(recipe)
+            %span New!
