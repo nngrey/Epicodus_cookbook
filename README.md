@@ -1,4 +1,4 @@
-== Epicodus exercise
+#Epicodus exercise
 (I pulled this repo and updated it on Jan  19, 2016)
 
 Let's make a site for sharing recipes.
